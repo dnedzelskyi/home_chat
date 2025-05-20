@@ -1,0 +1,79 @@
+:root {
+  color-scheme: light dark;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: CanvasText;
+  background-color: Canvas;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
+  min-height: 100svh;
+  max-width: max(480px, 60vw);
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+main {
+  display: grid;
+  gap: 1rem;
+  grid-template-rows: 1fr auto auto;
+}
+
+h1 {
+  font-family: sans-serif;
+}
+
+textarea {
+  padding: 1rem;
+  font-family: 'Courier New', monospace;
+  font-size: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 0.5em;
+}
+
+button {
+  min-width: 80px;
+  min-height: 32px;
+  border-radius: 0.5rem;
+  border: 1px solid CanvasText;
+}
+
+#chat-container {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+  max-height: 64svh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+#message-box {
+}
+
+#chat-action-bar {
+  justify-self: end;
+}
+
+.message {
+  display: grid;
+  gap: 1rem;
+  padding: 1rem;
+  font-family: 'Courier New', monospace;
+  background-color: light-dark(#ffc1078f, #36454fbd);
+  border-radius: 0.5em;
+}
+
+.message span {
+  font-size: 0.7rem;
+  text-align: end;
+  font-style: italic;
+}

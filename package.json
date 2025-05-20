@@ -1,0 +1,24 @@
+{
+  "name": "home_chat",
+  "version": "1.0.0",
+  "description": "Simple home chat app.",
+  "license": "ISC",
+  "author": "Dmytro Nedzelskyi",
+  "type": "module",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "NODE_ENV=dev node server/server.js",
+    "lint": "eslint .",
+    "format": "prettier --write \"client/src/**/*.{js,css,html}\""
+  },
+  "devDependencies": {
+    "eslint": "^9.20.1",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "prettier": "^3.5.1"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  }
+}
