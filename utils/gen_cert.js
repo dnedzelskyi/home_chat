@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import selfsigned from 'selfsigned';
 
-if (fs.existsSync('./cert/key.pem') && fs.existsSync('./cert/cert.pem')) {
+if (fs.existsSync('./certs/key.pem') && fs.existsSync('./certs/cert.pem')) {
   console.log('Dev certificates already exist. Skipping generation.');
   process.exit(0);
 }
@@ -23,8 +23,8 @@ const options = {
 
 const { private: key, cert } = selfsigned.generate(attrs, options);
 
-fs.mkdirSync('./cert', { recursive: true });
-fs.writeFileSync('./cert/key.pem', key);
-fs.writeFileSync('./cert/cert.pem', cert);
+fs.mkdirSync('./certs', { recursive: true });
+fs.writeFileSync('./certs/key.pem', key);
+fs.writeFileSync('./certs/cert.pem', cert);
 
 console.log('Dev certificates generated successfully.');

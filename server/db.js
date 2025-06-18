@@ -1,10 +1,11 @@
 import { DatabaseSync } from 'node:sqlite';
+import { settings } from './settings.js';
 import fs from 'fs';
 import path from 'path';
 
 const CONSTANTS = {
-  DB_FOLDER: path.resolve(path.dirname('./'), 'db'),
-  DB_FILE_NAME: 'chat.db',
+  DB_FILE_PATH: path.resolve(path.dirname('./'), settings.dbFilePath),
+  SCHEMA_FOLDER: path.resolve(path.dirname('./'), 'schema'),
   DB_INITIAL_ERR_MSG: 'Error occurred when trying to init chat db.',
   DB_SAVE_ERR_MSG: 'Unable to save data.',
   DB_GET_ERR_MSG: 'Unable to get data.',
@@ -15,8 +16,7 @@ const CONSTANTS = {
 
 export class DB {
   constructor() {
-    const dbPath = path.resolve(CONSTANTS.DB_FOLDER, CONSTANTS.DB_FILE_NAME);
-    this._db = new DatabaseSync(dbPath, { open: true });
+    this._db = new DatabaseSync(CONSTANTS.DB_FILE_PATH, { open: true });
   }
 
   init() {
@@ -28,7 +28,7 @@ export class DB {
 
       // Apply new schema changes if any.
       let schemaPath = path.resolve(
-        CONSTANTS.DB_FOLDER,
+        CONSTANTS.SCHEMA_FOLDER,
         CONSTANTS.getSchemaFileName(ver.toString())
       );
       this._db.exec('BEGIN;');
@@ -36,11 +36,11 @@ export class DB {
         const schemaSQL = fs.readFileSync(schemaPath, 'utf8');
         this._db.exec(schemaSQL);
 
+        ver++;
         schemaPath = path.resolve(
-          CONSTANTS.DB_FOLDER,
+          CONSTANTS.SCHEMA_FOLDER,
           CONSTANTS.getSchemaFileName(ver.toString())
         );
-        ver++;
       }
       this._db.exec('COMMIT;');
     } catch (err) {
