@@ -7,7 +7,8 @@
   "type": "module",
   "main": "server/server.js",
   "scripts": {
-    "start": "NODE_ENV=dev node server/server.js",
+    "dev": "npm run gen-cert && NODE_ENV=development node server/server.js",
+    "gen-cert": "node utils/gen_cert.js",
     "lint": "eslint .",
     "format": "prettier --write \"client/src/**/*.{js,css,html}\""
   },
@@ -15,7 +16,8 @@
     "eslint": "^9.20.1",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-prettier": "^5.2.3",
-    "prettier": "^3.5.1"
+    "prettier": "^3.5.1",
+    "selfsigned": "^2.4.1"
   },
   "dependencies": {
     "express": "^4.21.2",

@@ -10,6 +10,12 @@
       "*": ["./*"]
     }
   },
-  "include": ["server/**/*", "client/**/*", "configs/**/*", "ws"],
+  "include": [
+    "server/**/*",
+    "client/**/*",
+    "configs/**/*",
+    "utils/**/*",
+    "ws"
+  ],
   "exclude": ["node_modules"]
 }

@@ -11,6 +11,9 @@ dist/
 # Environment variables
 .env
 
+# Certificates
+cert/
+
 # macOS system files
 .DS_Store
 
