@@ -1,0 +1,8 @@
+{
+  "port": 3031,
+  "ssl": {
+    "key": "./certs/key.pem",
+    "cert": "./certs/cert.pem"
+  },
+  "dbFilePath": "db/chat.db"
+}

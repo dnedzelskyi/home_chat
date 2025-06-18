@@ -2,11 +2,15 @@ version: '3.8'
 
 services:
   home_chat:
-    build: .
+    build:
+      context: .
+      target: production
     ports:
-      - '3000:3000'
-    volumes:
-      - .:/app
-      - /app/node_modules
+      - '3031:3031'
     environment:
-      - NODE_ENV=dev
+      - NODE_ENV=production
+    volumes:
+      - chat-db:/app/db
+      - /etc/home_chat/certs:/app/certs
+volumes:
+  chat-db:

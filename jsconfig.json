@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es2020",
+    "module": "CommonJS",
+    "strict": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": {
+      "*": ["./*"]
+    }
+  },
+  "include": [
+    "server/**/*",
+    "client/**/*",
+    "configs/**/*",
+    "utils/**/*",
+    "ws"
+  ],
+  "exclude": ["node_modules"]
+}

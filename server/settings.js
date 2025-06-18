@@ -2,6 +2,7 @@ import path from 'path';
 
 const env = process.env.NODE_ENV || 'dev';
 
+// @ts-ignore
 let { default: settings } = await import(`../configs/${env}.json`, {
   with: { type: 'json' },
 });
